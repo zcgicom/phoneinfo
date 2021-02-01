@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资讯</title>
+</head>
+<body>
+    <h2>手机资讯</h2>
+    <table>
+        <tr class="information-mark" align="center">
+            <td>序号</td>
+            <td>标题</td>
+            <td>回复/查看</td>
+            <td>发表时间</td>
+            <td>最新回复</td>
+        </tr>
+        <tr th:class="information+'_'+${information.id}" th:each="information:${informations}" align="center">
+            <td><p th:text="${information.id}"></p></td>
+            <td>
+                <a th:href="'/details?informationId='+${information.id}"><p th:text="${information.title}"></p></a>
+            </td>
+            <td>
+                <p th:text="${information.replyCount}+'/'+${information.viewCount}"></p>
+            </td>
+            <td><p th:text="${#dates.format(information.reportTime,'yyyy-MM-dd')}"></p></td>
+            <td><p th:text="${#dates.format(information.lastPostTime,'yyyy-MM-dd')}"></p></td>
+        </tr>
+    </table>
+</body>
+</html>

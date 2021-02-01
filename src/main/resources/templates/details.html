@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情</title>
+</head>
+<body>
+    <h2 class="information-title" th:text="${detailsMap.get('information').title}"></h2>
+    <div class="information-content">
+        <span style="list-style-type: none">
+            <li th:text="'发表于：'+${#dates.format(detailsMap.get('information').reportTime,'yyyy-MM-dd')}"></li>
+            <li th:text="${detailsMap.get('information').content}"></li>
+        </span>
+    </div>
+    <div class="information-replies">
+        <h3>读者回应</h3>
+        <span th:each="reply:${detailsMap.get('replies')}" style="list-style-type: none">
+            <li th:text="'发表于：'+${#dates.format(reply.replyTime,'yyyy-MM-dd')}"></li>
+            <li th:text="${reply.content}"></li>
+        </span>
+    </div>
+    <div>
+        <h3>快速回复(字数200字以内)</h3>
+        <form th:action="'/reply?informationId='+${detailsMap.get('information').id}" method="post">
+            <textarea class="reply-content" name="new-reply" style="min-height: 18px;min-width:150px;height: 100px;width: 300px;"></textarea>
+            <input type="submit" value="提交">
+            <a href="/">返回首页</a>
+        </form>
+    </div>
+</body>
+</html>

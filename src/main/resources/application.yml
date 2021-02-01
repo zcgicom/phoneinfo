@@ -1,0 +1,24 @@
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/android?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: fishbrain
+    thymeleaf:
+        mode: HTML
+        encoding: UTF-8
+        servlet:
+            content-type: text/html
+        cache: false
+    mvc:
+        static-path-pattern: /**
+    web:
+        resources:
+            static-locations: classpath:/templates/,classpath:/static/
+
+mybatis-plus:
+    mapper-locations: classpath:/com/itcat/mapper/*.xml
+
+mybatis:
+    type-aliases-package: com.itcat.entity
