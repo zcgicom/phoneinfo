@@ -27,7 +27,7 @@ public class InformationController {
      * 展示所有资讯信息
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping("/phone")
     public ModelAndView queryAllInformation(){
         List<Information> informations = informationService.queryAllInformation();
 //        for (Information item : informations) {
